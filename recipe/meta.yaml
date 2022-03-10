@@ -29,6 +29,7 @@ requirements:
     - python >=3.6
   run:
     - cyclonedx-python-lib >=2.0.0,<3.0.0
+    - pip-requirements-parser >=31.2.0,<32.0.0
     - python >=3.6
 
 test:
