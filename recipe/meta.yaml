@@ -1,4 +1,4 @@
-{% set version = "3.2.2" %}
+{% set version = "3.3.0" %}
 {% set cov_fail_under = 47 %}
 {% set test_skips = "not test_simple" %}
 
@@ -9,10 +9,10 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx-bom-{{ version }}.tar.gz
-    sha256: f600ecef111ef2036dada7ce786896aded8bacceb51672c2db98e106e36cf1a6
+    sha256: bdb7dfd41d865cca9b7f62d03739ccfa1a0bd1089dd1a3aed3995786090a8838
   - folder: src
     url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: fda925c11737499eaa3df916bed23cc9989c6d1afb9301d736925e7833455ce0
+    sha256: d2bbe2b1073556da5c18fa8e1ffba47e5f101290b6c4b1af51eb03cf05d57237
 
 build:
   number: 0
