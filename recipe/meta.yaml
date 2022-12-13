@@ -1,4 +1,4 @@
-{% set version = "3.6.3" %}
+{% set version = "3.10.0" %}
 {% set cov_fail_under = 47 %}
 {% set test_skips = "not test_simple" %}
 
@@ -8,11 +8,11 @@ package:
 
 source:
   - folder: dist
-    url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx-bom-{{ version }}.tar.gz
-    sha256: 9cd4efb9fb0706383c42a21010eae928df6677e0d6246b67e1a875dbd6c8c3ae
+    url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx_bom-{{ version }}.tar.gz
+    sha256: 12aeea1b8aba4b8fe92979f112a0b252e12d5a7f0afd13fb59ef110f79f6e0c1
   - folder: src
     url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: d985a9f760892dd7e178700358ffcd5e6220cee45932f373d4e19030a7dfdcb5
+    sha256: 480fa491e491a8936dd5565bb889997d9d195e922f31a9fc8bbfc6773f6e484d
 
 build:
   number: 0
@@ -28,10 +28,10 @@ requirements:
     - poetry-core >=1.0.0
     - python >=3.6
   run:
-    - cyclonedx-python-lib >=2.0.0,<3.0.0
+    - cyclonedx-python-lib >=2.0.0,<4.0.0
     - importlib-metadata >=3.4
     - packageurl-python >=0.9
-    - pip-requirements-parser >=31.2.0,<32.0.0
+    - pip-requirements-parser >=32.0.0,<33.0.0
     - python >=3.6
     - setuptools >=47.0.0
     - toml >=0.10.0,<0.11.0
@@ -40,6 +40,7 @@ test:
   source_files:
     - src/tests
   requires:
+    - ddt
     - pip
     - pytest-cov
   imports:
