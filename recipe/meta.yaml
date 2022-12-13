@@ -40,6 +40,7 @@ test:
   source_files:
     - src/tests
   requires:
+    - ddt
     - pip
     - pytest-cov
   imports:
