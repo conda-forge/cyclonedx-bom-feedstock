@@ -18,7 +18,7 @@ build:
   number: 0
   noarch: python
   entry_points:
-    - cyclonedx-bom = cyclonedx_py.client:main
+    - cyclonedx-bom = cyclonedx_py.client:main_deprecated
     - cyclonedx-py = cyclonedx_py.client:main
   script: cd dist && {{ PYTHON }} -m pip install . -vv
 
