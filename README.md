@@ -1,11 +1,11 @@
-About cyclonedx-bom
-===================
+About cyclonedx-bom-feedstock
+=============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cyclonedx-bom-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/CycloneDX/cyclonedx-python
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cyclonedx-bom-feedstock/blob/main/LICENSE.txt)
 
 Summary: CycloneDX Software Bill of Materials (SBOM) generation utility
 
