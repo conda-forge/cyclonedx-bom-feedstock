@@ -1,4 +1,4 @@
-{% set version = "3.11.2" %}
+{% set version = "3.11.5" %}
 {% set cov_fail_under = 47 %}
 {% set test_skips = "not test_simple" %}
 
@@ -9,10 +9,10 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx_bom-{{ version }}.tar.gz
-    sha256: b0c2beab3364ded549e3b386d5f8e973ba89b8306b755e905fd7a62439ba37e0
+    sha256: 65589a061be98233fcffcdd2dad70e99999a5ecef6cecff049e2d77f35bb95a1
   - folder: src
     url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 035f25443879b07d1c2ad9380bf34f08071e94d2a21ccd475445a9567d2ae234
+    sha256: c0c54efffde9c63bfb687721e4e3f6f377dccaaf8b0e56675b708654e019f8cf
 
 build:
   number: 0
@@ -20,7 +20,9 @@ build:
   entry_points:
     - cyclonedx-bom = cyclonedx_py.client:main_deprecated
     - cyclonedx-py = cyclonedx_py.client:main
-  script: cd dist && {{ PYTHON }} -m pip install . -vv
+  script:
+    - cd dist && {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    - {{ PYTHON }} -c "import site, pathlib; sp = pathlib.Path(site.getsitepackages()[0]); [(sp / p).unlink() for p in ['LICENSE', 'NOTICE']]"
 
 requirements:
   host:
@@ -28,6 +30,7 @@ requirements:
     - poetry-core >=1.0.0
     - python >=3.6
   run:
+    - chardet >=5.0,<6.0
     - cyclonedx-python-lib >=2.0.0,<4.0.0
     - importlib-metadata >=3.4
     - packageurl-python >=0.9
@@ -49,7 +52,7 @@ test:
     - pip check
     - cyclonedx-bom --help
     - cyclonedx-py --help
-    - pytest src/tests -vv --cov cyclonedx_py --cov-report term-missing:skip-covered --no-cov-on-fail -k "{{ test_skips }}" --cov-fail-under {{ cov_fail_under }}
+    - cd src && pytest -vv --color=yes --tb=long --cov=cyclonedx_py --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail -k "{{ test_skips }}" --cov-fail-under={{ cov_fail_under }}
 
 about:
   home: https://github.com/CycloneDX/cyclonedx-python
