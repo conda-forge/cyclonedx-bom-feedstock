@@ -1,4 +1,4 @@
-{% set version = "3.11.6" %}
+{% set version = "3.11.7" %}
 
 package:
   name: cyclonedx-bom
@@ -7,10 +7,10 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx_bom-{{ version }}.tar.gz
-    sha256: b358625adfbe0c4a3aee3ea48f52718c9f97ec75ec55fa7f536e41fd1a514f48
+    sha256: 656a6df47511abff82c159dfa947a6f881ec971d1b9861ec14802bc50bc29e05
   - folder: src
     url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 7c6234b85a0a33a96a722378d5788dda3bcddd0d5b190a3c5f6f52c5a78c7b90
+    sha256: 3b005ad5ed32e42feac14471c5884f33a74ea1ab81b01b3403a6de1b0d697ac3
 
 build:
   number: 0
@@ -26,14 +26,14 @@ requirements:
   host:
     - pip
     - poetry-core >=1.0.0
-    - python >=3.7
+    - python >=3.6
   run:
     - chardet >=5.0.0,<6.0.0
     - cyclonedx-python-lib >=2.0.0,<4.0.0
     - importlib-metadata >=3.4
     - packageurl-python >=0.9
     - pip-requirements-parser >=32.0.0,<33.0.0
-    - python >=3.7
+    - python >=3.6
     - setuptools >=47.0.0
     - toml >=0.10.0,<0.11.0
 
