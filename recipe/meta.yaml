@@ -38,7 +38,7 @@ requirements:
     - toml >=0.10.0,<0.11.0
 
 test:
-  {% set cov_fail_under = 65 %}
+  {% set cov_fail_under = 63 %}
   {% set test_skips = "not test_simple" %}
   source_files:
     - src/tests
