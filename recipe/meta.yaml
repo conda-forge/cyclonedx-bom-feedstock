@@ -19,8 +19,7 @@ build:
   number: 0
   noarch: python
   entry_points:
-    - cyclonedx-bom = cyclonedx_py.client:main_deprecated
-    - cyclonedx-py = cyclonedx_py.client:main
+    - cyclonedx-py = cyclonedx_py._internal.cli:run
   script:
     - cd dist && {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     - {{ PYTHON }} -c "import site, pathlib; sp = pathlib.Path(site.getsitepackages()[0]); [(sp / p).unlink() for p in ['LICENSE', 'NOTICE']]"
@@ -43,16 +42,17 @@ test:
   source_files:
     - src/tests
   requires:
+    - coverage
     - ddt
     - pip
-    - pytest-cov
+    - pytest
   imports:
     - cyclonedx_py
   commands:
     - pip check
-    - cyclonedx-bom --help
     - cyclonedx-py --help
-    - cd src && pytest -vv --color=yes --tb=long --cov=cyclonedx_py --cov-branch --cov-report=term-missing:skip-covered --no-cov-on-fail -k "{{ test_skips }}" --cov-fail-under={{ cov_fail_under }}
+    - cd src && coverage run --source cyclonedx_py --branch -m pytest -vv --color=yes --tb=long
+    - coverage report --show-missing --skip-covered --fail-under={{ cov_fail_under }}
 
 about:
   home: https://github.com/CycloneDX/cyclonedx-python
