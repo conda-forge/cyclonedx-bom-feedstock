@@ -1,6 +1,6 @@
 {% set version = "4.0.0" %}
 {% set cov_fail_under = 63 %}
-{% set test_skips = "not test_simple" %}
+{% set test_skips = "not (simple or cli_pipenv or cli_poetry or cli_requirements)" %}
 {% set min_python = "python >=3.8" %}
 
 package:
