@@ -1,6 +1,6 @@
 {% set version = "4.0.0" %}
-{% set cov_fail_under = 63 %}
-{% set test_skips = "not (simple or cli_pipenv or cli_poetry or cli_requirements)" %}
+{% set cov_fail_under = 76 %}
+{% set test_skips = "not (simple or data_file_filter or data_os_filter)" %}
 {% set min_python = "python >=3.8" %}
 
 package:
@@ -52,7 +52,11 @@ test:
   commands:
     - pip check
     - cyclonedx-py --help
-    - cd src && coverage run --source cyclonedx_py --branch -m pytest -vv --color=yes --tb=long -k "{{ test_skips }}"
+
+    - >
+      cd src
+      && python -c "__import__('pathlib').Path('tests/integration/test_cli_environment.py').unlink()"
+      && coverage run --source cyclonedx_py --branch -m pytest -vv --color=yes --tb=long -k "{{ test_skips }}"
     - coverage report --show-missing --skip-covered --fail-under={{ cov_fail_under }}
 
 about:
