@@ -52,7 +52,7 @@ test:
   commands:
     - pip check
     - cyclonedx-py --help
-    - cd src && coverage run --source cyclonedx_py --branch -m pytest -vv --color=yes --tb=long
+    - cd src && coverage run --source cyclonedx_py --branch -m pytest -vv --color=yes --tb=long -k "{{ test_skips }}"
     - coverage report --show-missing --skip-covered --fail-under={{ cov_fail_under }}
 
 about:
