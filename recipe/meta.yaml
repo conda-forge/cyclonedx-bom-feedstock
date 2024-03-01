@@ -6,19 +6,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx_bom-{{ version }}.tar.gz
-  sha256: c64c54b18f0ecd67f90895a812cd8411e56d5c0130e5dd26a5a6b8cb3a9d7581
-  
+  - folder: dist
+    url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx_bom-{{ version }}.tar.gz
+    sha256: c64c54b18f0ecd67f90895a812cd8411e56d5c0130e5dd26a5a6b8cb3a9d7581
+  - folder: src
+    url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v{{ version }}.tar.gz
+    sha256: 965a643ba84a6dee73bb05c6fac531aca0f7013a90b0d38e45d90d9ad9c83ecf
+
 build:
   number: 0
   noarch: python
   entry_points:
     - cyclonedx-py = cyclonedx_py._internal.cli:run
   script:
-    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-    - 
-      {{ PYTHON }} -c "import site, pathlib; 
-      sp = pathlib.Path(site.getsitepackages()[0]); 
+    - cd src && {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    -
+      {{ PYTHON }} -c "import site, pathlib;
+      sp = pathlib.Path(site.getsitepackages()[0]);
       assert not all((sp / p).exists() for p in ['LICENSE', 'NOTICE']);"
 
 requirements:
@@ -38,7 +42,7 @@ requirements:
 
 test:
   source_files:
-    - tests
+    - src/tests
   requires:
     - coverage
     - ddt
@@ -49,23 +53,23 @@ test:
   commands:
     - pip check
     - cyclonedx-py --help
-    - python -c "__import__('pathlib').Path('tests/integration/test_cli_environment.py').unlink()" 
-    - 
-      coverage run --source cyclonedx_py --branch -m 
-        pytest -vv --color=yes --tb=long -k "not (
-          simple 
-          or data_file_filter 
+    - python -c "__import__('pathlib').Path('src/tests/integration/test_cli_environment.py').unlink()"
+    -
+      coverage run --source cyclonedx_py --branch -m
+        pytest src/tests -vv --color=yes --tb=long -k "not (
+          simple
+          or data_file_filter
           or data_os_filter
         )"
-    - coverage report --show-missing --skip-covered --fail-under=76
+    - coverage report --show-missing --skip-covered --fail-under=78
 
 about:
   home: https://github.com/CycloneDX/cyclonedx-python
   summary: CycloneDX Software Bill of Materials (SBOM) generation utility
   license: Apache-2.0
   license_file:
-    - LICENSE
-    - NOTICE
+    - dist/LICENSE
+    - dist/NOTICE
 
 extra:
   recipe-maintainers:
