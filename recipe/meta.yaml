@@ -9,6 +9,7 @@ source:
   - folder: dist
     url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx_bom-{{ version }}.tar.gz
     sha256: c64c54b18f0ecd67f90895a812cd8411e56d5c0130e5dd26a5a6b8cb3a9d7581
+  # pypi sdist does not include all test data
   - folder: src
     url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v{{ version }}.tar.gz
     sha256: 965a643ba84a6dee73bb05c6fac531aca0f7013a90b0d38e45d90d9ad9c83ecf
