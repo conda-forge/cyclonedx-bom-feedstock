@@ -17,11 +17,9 @@ build:
   script:
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     - 
-      {{ PYTHON }} -c "
-      import site, pathlib; 
+      {{ PYTHON }} -c "import site, pathlib; 
       sp = pathlib.Path(site.getsitepackages()[0]); 
-      assert not all((sp / p).exists() for p in ['LICENSE', 'NOTICE']);
-      "
+      assert not all((sp / p).exists() for p in ['LICENSE', 'NOTICE']);"
 
 requirements:
   host:
