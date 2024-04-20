@@ -1,4 +1,5 @@
-{% set version = "4.2.0" %}
+{% set min_python = "python >=3.8" %}
+{% set version = "4.3.0" %}
 {% set min_python = "python >=3.8" %}
 
 package:
@@ -8,11 +9,11 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx_bom-{{ version }}.tar.gz
-    sha256: 6547514a422cf27aadb982d896ced4a845e65d30eb8325b92219fa5ab95940eb
+    sha256: 760aaa48e0c00ee4eb7d9da24c5362c53a3eaa9ce4509682ef2667ee012772a6
   # pypi sdist does not include all test data
   - folder: src
     url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 40e6794100e91dbd7e197c4eab56062cc9bd9496212c4fb4b85fef302ed1c7a7
+    sha256: 1c828bea61a46bb62ba4c10421fbc85d106923b178d766a2d82169d05535e3cc
 
 build:
   number: 0
