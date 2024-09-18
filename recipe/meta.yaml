@@ -1,4 +1,4 @@
-{% set version = "4.5.0" %}
+{% set version = "4.5.1" %}
 
 package:
   name: cyclonedx-bom
@@ -7,11 +7,11 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx_bom-{{ version }}.tar.gz
-    sha256: 09a9a6c3b86e1a143f2d89a4955a8e303abed7106adc4f5f0207ae0e3416ff86
+    sha256: d4db99b61ac7a7bf3d0621c9188227412406206529c32c6d463caf97424f020f
   # pypi sdist does not include all test data
   - folder: src
     url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: eda02415b9df1931b0eca179ecbe23396b3d6e8a064f05d0240845b42b02a888
+    sha256: c57dadac7ea653be8eeec24a7493517fb66be3b5ef01d9b946ef53b46c45ddc5
 
 build:
   number: 0
