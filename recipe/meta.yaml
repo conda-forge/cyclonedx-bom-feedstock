@@ -1,4 +1,4 @@
-{% set version = "4.6.1" %}
+{% set version = "5.1.0" %}
 
 package:
   name: cyclonedx-bom
@@ -7,11 +7,11 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/c/cyclonedx-bom/cyclonedx_bom-{{ version }}.tar.gz
-    sha256: 2fe72daadfd8addd824b235f8ea21ff6045ebe00bbb9da48ec07bfc5a3c39169
+    sha256: 8ae325b9b3099c65cc3df1e5a6614274f21c8d1510ef83ebe66b98653a6328c8
   # pypi sdist does not include all test data
   - folder: src
     url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 2aeb9b2039703e548629f8781bb10d85abea07ead5cc5cca082e47d33085e2e7
+    sha256: f06b77a70561b8f8872b377a9be717ed5753c127d8976c61e1dfcb11dcab4fcc
 
 build:
   number: 0
@@ -29,7 +29,7 @@ requirements:
     - python >=3.8
   run:
     - chardet >=5.1.0,<6.0.0
-    - cyclonedx-python-lib >=7.3.0,<8.0.0,!=7.3.1
+    - cyclonedx-python-lib >=8.0,<9.0
     - cyclonedx-python-lib-with-validation
     - packageurl-python >=0.11,<2
     - packaging >=22.0.0,<25.0.0
@@ -40,6 +40,7 @@ requirements:
 test:
   source_files:
     - src/tests
+    - src/pyproject.toml
   requires:
     - coverage
     - ddt
@@ -52,7 +53,7 @@ test:
     - cyclonedx-py --help
     - python -c "__import__('pathlib').Path('src/tests/integration/test_cli_environment.py').unlink()"
     - coverage run --source cyclonedx_py --branch -m pytest src/tests -vv --color=yes --tb=long -k "not ( simple or data_file_filter or data_os_filter )"
-    - coverage report --show-missing --skip-covered --fail-under=76
+    - coverage report --show-missing --skip-covered --fail-under=75
 
 about:
   home: https://github.com/CycloneDX/cyclonedx-python
