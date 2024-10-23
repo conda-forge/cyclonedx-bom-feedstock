@@ -29,7 +29,7 @@ requirements:
     - python >=3.8
   run:
     - chardet >=5.1.0,<6.0.0
-    - cyclonedx-python-lib >=7.3.0,<8.0.0,!=7.3.1
+    - cyclonedx-python-lib >=8.0,<9.0
     - cyclonedx-python-lib-with-validation
     - packageurl-python >=0.11,<2
     - packaging >=22.0.0,<25.0.0
