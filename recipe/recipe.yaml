@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "7.0.0"
+  version: "7.1.0"
 
 package:
   name: cyclonedx-bom
@@ -10,11 +10,11 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/c/cyclonedx-bom/cyclonedx_bom-${{ version }}.tar.gz
-    sha256: 43395dd779092087a1ddc132b0c2025741b60224932e5f3baab817b8ac8c55b7
+    sha256: dbaa3cecb1d26818963cd5f8e32e9cab41fd9baefedde0781ec134ab3bec1496
     target_directory: dist
   # pypi sdist does not include all test data
   - url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: d4fec0971d43b3c00a14abecd3eee6cf9a99baae2f8882e42e918f61c35f5454
+    sha256: 1b34725c6f735cccb575c2405d5db2c79925b1990e153dd9b8dc71c7418b94ec
     target_directory: src
 
 build:
