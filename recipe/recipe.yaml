@@ -2,7 +2,8 @@
 schema_version: 1
 
 context:
-  version: "7.2.1"
+  version: "7.2.2"
+  python_check_max: "3.14"
 
 package:
   name: cyclonedx-bom
@@ -10,11 +11,11 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/c/cyclonedx-bom/cyclonedx_bom-${{ version }}.tar.gz
-    sha256: ead9923a23c71426bcc83ea371c87945b85f76c31728625dde35ecfe0fa2e712
+    sha256: dc7b994d41a83dc24caa511462dbf9fa6ede51b962f42533a58d0a8261d98e56
     target_directory: dist
   # pypi sdist does not include all test data
   - url: https://github.com/CycloneDX/cyclonedx-python/archive/refs/tags/v${{ version }}.tar.gz
-    sha256: b42d4ae5a1f986de6df29c95be48ab1f567bffa2ba28b96053f5fcc25e81ea39
+    sha256: 4d7edcbe63fbb8928e7c9bc6234122affe695c600a7d8cd70a30e1707476bf90
     target_directory: src
 
 build:
@@ -37,7 +38,7 @@ requirements:
     - cyclonedx-python-lib >=8.0,<12.0
     - cyclonedx-python-lib-with-validation
     - packageurl-python >=0.11,<2
-    - packaging >=22.0.0,<26.0.0
+    - packaging >=22.0.0,<27.0.0
     - pip-requirements-parser >=32.0.0,<33.0.0
     - python >=${{ python_min }}
     - tomli >=2.0.1,<3.0.0
@@ -48,7 +49,7 @@ tests:
       pip_check: true
       python_version:
         - ${{ python_min }}.*
-        - 3.14.*
+        - ${{ python_check_max }}.*
   - files:
       recipe:
         - run_test.py
@@ -71,7 +72,8 @@ about:
   license_file:
     - dist/LICENSE
     - dist/NOTICE
-  homepage: https://github.com/CycloneDX/cyclonedx-python
+  homepage: https://pypi.org/project/cyclonedx-bom/
+  repository: https://github.com/CycloneDX/cyclonedx-python
 
 extra:
   recipe-maintainers:
