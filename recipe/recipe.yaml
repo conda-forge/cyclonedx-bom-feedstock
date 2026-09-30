@@ -34,16 +34,22 @@ requirements:
     - poetry-core >=1.0.0
     - python ${{ python_min }}.*
   run:
-    - chardet >=5.1.0,<6.0.0
-    - cyclonedx-python-lib >=8.0,<12.0
+    - chardet >=5.1.0,!=6.*,<8
+    - cyclonedx-python-lib >=8.0.0,<12.0.0
     - cyclonedx-python-lib-with-validation
-    - packageurl-python >=0.11,<2
+    - packageurl-python >=0.11.0,<2.0.0
     - packaging >=22.0.0,<27.0.0
     - pip-requirements-parser >=32.0.0,<33.0.0
     - python >=${{ python_min }}
-    - tomli >=2.0.1,<3.0.0
 
 tests:
+  - package_contents:
+      strict: true
+      files:
+        - etc/conda/test-files/cyclonedx-bom/**
+      site_packages:
+        - cyclonedx_py/**
+        - cyclonedx_bom-${{ version }}.dist-info/**
   - python:
       imports: cyclonedx_py
       pip_check: true
@@ -72,7 +78,7 @@ about:
   license_file:
     - dist/LICENSE
     - dist/NOTICE
-  homepage: https://pypi.org/project/cyclonedx-bom/
+  homepage: https://pypi.org/project/cyclonedx-bom
   repository: https://github.com/CycloneDX/cyclonedx-python
 
 extra:
