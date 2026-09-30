@@ -3,7 +3,7 @@ About cyclonedx-bom-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cyclonedx-bom-feedstock/blob/main/LICENSE.txt)
 
-Home: https://pypi.org/project/cyclonedx-bom/
+Home: https://pypi.org/project/cyclonedx-bom
 
 Package license: Apache-2.0
 

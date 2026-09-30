@@ -19,6 +19,7 @@ PIP_ARGS = [
     "--no-deps",
     "--no-build-isolation",
     "--disable-pip-version-check",
+    "--check-build-dependencies",
 ]
 
 
