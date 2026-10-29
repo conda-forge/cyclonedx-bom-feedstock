@@ -3,14 +3,14 @@ schema_version: 1
 
 context:
   version: "7.6.0"
-  python_check_max: "3.14"
+  python_check_max: "3.15"
 
 package:
   name: cyclonedx-bom
   version: ${{ version }}
 
 source:
-  - url: https://pypi.org/packages/source/c/cyclonedx-bom/cyclonedx_bom-${{ version }}.tar.gz
+  - url: https://files.pythonhosted.org/packages/source/c/cyclonedx-bom/cyclonedx_bom-${{ version }}.tar.gz
     sha256: ab8a8c4cf0d8704f75029f75826993047783b8fd416e7dc3431af54c03e8adab
     target_directory: dist
   # pypi sdist does not include all test data
